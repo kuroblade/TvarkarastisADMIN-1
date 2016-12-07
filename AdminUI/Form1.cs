@@ -16,6 +16,8 @@ namespace AdminUI
     {
         MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=Projektas7;database=tvarkarastisdata");
         String[] kas = new String[50];
+        String pasirinktas;
+
         public Form1()
         {
             InitializeComponent();
@@ -23,12 +25,8 @@ namespace AdminUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void duombaze_Click(object sender, EventArgs e)
-        {
-
+            Width = 875 + monthCalendar1.Width + 10;
+            selectedDateLabel.Width = monthCalendar1.Width;
         }
 
         private void idetiButton_Click(object sender, EventArgs e)
@@ -45,14 +43,52 @@ namespace AdminUI
             {
                 MessageBox.Show("Irasas neikeltas");
             }
-
             connection.Close();
+
+            string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + dataPicker.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
+            Array.Clear(kas, 0, kas.Length);
+            rodymas(selectQuerry);
         }
 
-        private void ziuretiButton_Click(object sender, EventArgs e)
+        private void monthCalendar1_MouseUp(object sender, MouseEventArgs e)
         {
-            string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + dateTimePicker1.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
-            MySqlCommand cmd = new MySqlCommand(selectQuerry, connection);
+            Array.Clear(kas, 0, kas.Length);
+            selectedDateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("yyyy-MM-dd");
+            string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + selectedDateLabel.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
+            rodymas(selectQuerry);  
+        }
+
+        private void trintiButton_Click(object sender, EventArgs e)
+        {
+            radio();
+            string deleteQuerry = "DELETE FROM tvarkarastis WHERE ID = " + pasirinktas + " ";
+            MySqlCommand cmd = new MySqlCommand(deleteQuerry, connection);
+
+                try
+                {
+                    connection.Open();
+
+                    if (MessageBox.Show("Ar tikrai norit istrinti irasa?", "Istrinti", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Sekmingai istrinta");
+                        }
+                    }
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    connection.Close();
+                }
+            string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + selectedDateLabel.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
+            Array.Clear(kas, 0, kas.Length);
+            rodymas(selectQuerry);
+        }
+        private void rodymas(string sel)
+        {
+            MySqlCommand cmd = new MySqlCommand(sel, connection);
             connection.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             int i = 0;
@@ -71,52 +107,62 @@ namespace AdminUI
                 i++;
                 k++;
             }
-
+            radioButton1.Tag = kas[0];
             pask1.Text = kas[1];
-            pask2.Text = kas[6];
-            pab1.Text = kas[3];
-            pab2.Text = kas[8];
             prad1.Text = kas[2];
-            prad2.Text = kas[7];
+            pab1.Text = kas[3];
             aud1.Text = kas[4];
+            radioButton2.Tag = kas[5];
+            pask2.Text = kas[6];
+            prad2.Text = kas[7];
+            pab2.Text = kas[8];
             aud2.Text = kas[9];
-
+            radioButton3.Tag = kas[10];
+            pask3.Text = kas[11];
+            prad3.Text = kas[12];
+            pab3.Text = kas[13];
+            aud3.Text = kas[14];
+            radioButton4.Tag = kas[15];
+            pask4.Text = kas[16];
+            prad4.Text = kas[17];
+            pab4.Text = kas[18];
+            aud4.Text = kas[19];
+            radioButton5.Tag = kas[20];
+            pask5.Text = kas[21];
+            prad5.Text = kas[22];
+            pab5.Text = kas[23];
+            aud5.Text = kas[24];
 
             connection.Close();
         }
 
-        private void pasirinktiButton_Click(object sender, EventArgs e)
+        private void radio()
+        {
+            if (radioButton1.Checked)
+            {
+                pasirinktas = radioButton1.Tag.ToString();
+            }
+            else if (radioButton2.Checked)
+            {
+                pasirinktas = radioButton2.Tag.ToString();
+            }
+            else if (radioButton3.Checked)
+            {
+                pasirinktas = radioButton3.Tag.ToString();
+            }
+            else if (radioButton4.Checked)
+            {
+                pasirinktas = radioButton4.Tag.ToString();
+            }
+            else if (radioButton5.Checked)
+            {
+                pasirinktas = radioButton5.Tag.ToString();
+            };
+        }
+
+        private void issaugotiButton_Click(object sender, EventArgs e)
         {
 
-
-            string deleteQuerry = "DELETE FROM tvarkarastis WHERE ID = " + kas[0] + " ";
-            MySqlCommand cmd = new MySqlCommand(deleteQuerry, connection);
-            if (checkBox1.Checked == true)
-            {
-                try
-                {
-                    connection.Open();
-
-
-                    if (MessageBox.Show("Ar tikrai norit istrinti irasa?", "Istrinti", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-                    {
-
-                        if (cmd.ExecuteNonQuery() > 0)
-                        {
-                            MessageBox.Show("Sekmingai istrinta");
-                            ;
-                        }
-                    }
-
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    connection.Close();
-
-                }
-            }
         }
     }
 }

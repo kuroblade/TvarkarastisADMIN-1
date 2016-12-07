@@ -48,12 +48,7 @@
             this.auditorijaDrop = new System.Windows.Forms.ComboBox();
             this.issaugotiButton = new System.Windows.Forms.Button();
             this.idetiButton = new System.Windows.Forms.Button();
-            this.pasirinktiButton = new System.Windows.Forms.Button();
-            this.ziuretiButton = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.trintiiButton = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.aud1 = new System.Windows.Forms.Label();
             this.aud2 = new System.Windows.Forms.Label();
@@ -73,15 +68,17 @@
             this.pab1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.atskyrimas1 = new System.Windows.Forms.Label();
-            this.atnaujintiButton = new System.Windows.Forms.Button();
             this.destytojasLabel = new System.Windows.Forms.Label();
             this.destytojasPicker = new System.Windows.Forms.ComboBox();
-            this.redaguotiButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.kursasDrop = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label2 = new System.Windows.Forms.Label();
+            this.selectedDateLabel = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -278,6 +275,7 @@
             this.issaugotiButton.TabIndex = 13;
             this.issaugotiButton.Text = "Išsaugoti pakeitimus";
             this.issaugotiButton.UseVisualStyleBackColor = true;
+            this.issaugotiButton.Click += new System.EventHandler(this.issaugotiButton_Click);
             // 
             // idetiButton
             // 
@@ -289,65 +287,15 @@
             this.idetiButton.UseVisualStyleBackColor = true;
             this.idetiButton.Click += new System.EventHandler(this.idetiButton_Click);
             // 
-            // pasirinktiButton
+            // trintiiButton
             // 
-            this.pasirinktiButton.Location = new System.Drawing.Point(380, 210);
-            this.pasirinktiButton.Name = "pasirinktiButton";
-            this.pasirinktiButton.Size = new System.Drawing.Size(132, 40);
-            this.pasirinktiButton.TabIndex = 16;
-            this.pasirinktiButton.Text = "Ištrinti pasirinktą įrašą";
-            this.pasirinktiButton.UseVisualStyleBackColor = true;
-            this.pasirinktiButton.Click += new System.EventHandler(this.pasirinktiButton_Click);
-            // 
-            // ziuretiButton
-            // 
- /*           this.ziuretiButton.Location = new System.Drawing.Point(855, 210);
-            this.ziuretiButton.Name = "ziuretiButton";
-            this.ziuretiButton.Size = new System.Drawing.Size(227, 40);
-            this.ziuretiButton.TabIndex = 17;
-            this.ziuretiButton.Text = "Žiūrėti pasirinktos dienos tvarkaraštį";
-            this.ziuretiButton.UseVisualStyleBackColor = true;
-            this.ziuretiButton.Click += new System.EventHandler(this.ziuretiButton_Click);  */
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(340, 80);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(32, 17);
-            this.checkBox2.TabIndex = 20;
-            this.checkBox2.Text = "2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(340, 110);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(32, 17);
-            this.checkBox3.TabIndex = 21;
-            this.checkBox3.Text = "3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(340, 140);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(32, 17);
-            this.checkBox4.TabIndex = 22;
-            this.checkBox4.Text = "4";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(340, 170);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(32, 17);
-            this.checkBox5.TabIndex = 23;
-            this.checkBox5.Text = "5";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.trintiiButton.Location = new System.Drawing.Point(380, 205);
+            this.trintiiButton.Name = "trintiiButton";
+            this.trintiiButton.Size = new System.Drawing.Size(460, 40);
+            this.trintiiButton.TabIndex = 16;
+            this.trintiiButton.Text = "Ištrinti pasirinktą įrašą";
+            this.trintiiButton.UseVisualStyleBackColor = true;
+            this.trintiiButton.Click += new System.EventHandler(this.trintiButton_Click);
             // 
             // label13
             // 
@@ -519,15 +467,6 @@
             this.atskyrimas1.Size = new System.Drawing.Size(5, 240);
             this.atskyrimas1.TabIndex = 48;
             // 
-            // atnaujintiButton
-            // 
-            this.atnaujintiButton.Location = new System.Drawing.Point(660, 210);
-            this.atnaujintiButton.Name = "atnaujintiButton";
-            this.atnaujintiButton.Size = new System.Drawing.Size(180, 40);
-            this.atnaujintiButton.TabIndex = 50;
-            this.atnaujintiButton.Text = "Atnaujinti sąrašą";
-            this.atnaujintiButton.UseVisualStyleBackColor = true;
-            // 
             // destytojasLabel
             // 
             this.destytojasLabel.Location = new System.Drawing.Point(10, 140);
@@ -548,15 +487,6 @@
             this.destytojasPicker.Name = "destytojasPicker";
             this.destytojasPicker.Size = new System.Drawing.Size(200, 21);
             this.destytojasPicker.TabIndex = 52;
-            // 
-            // redaguotiButton
-            // 
-            this.redaguotiButton.Location = new System.Drawing.Point(516, 210);
-            this.redaguotiButton.Name = "redaguotiButton";
-            this.redaguotiButton.Size = new System.Drawing.Size(132, 40);
-            this.redaguotiButton.TabIndex = 53;
-            this.redaguotiButton.Text = "Redaguoti pasirinktą įrašą";
-            this.redaguotiButton.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -579,16 +509,6 @@
             this.kursasDrop.Size = new System.Drawing.Size(79, 21);
             this.kursasDrop.TabIndex = 55;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(340, 50);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(32, 17);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(855, 45);
@@ -597,28 +517,85 @@
             this.monthCalendar1.TabIndex = 56;
             this.monthCalendar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.monthCalendar1_MouseUp);
             // 
-            // label2
+            // selectedDateLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(943, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 57;
-            this.label2.Text = "label2";
+            this.selectedDateLabel.Location = new System.Drawing.Point(855, 210);
+            this.selectedDateLabel.Name = "selectedDateLabel";
+            this.selectedDateLabel.Size = new System.Drawing.Size(230, 30);
+            this.selectedDateLabel.TabIndex = 57;
+            this.selectedDateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(343, 52);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(31, 17);
+            this.radioButton1.TabIndex = 58;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(343, 83);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(31, 17);
+            this.radioButton2.TabIndex = 59;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(343, 115);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(31, 17);
+            this.radioButton3.TabIndex = 60;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "3";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(343, 142);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(31, 17);
+            this.radioButton4.TabIndex = 61;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "4";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(343, 170);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(31, 17);
+            this.radioButton5.TabIndex = 62;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "5";
+            this.radioButton5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 256);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(1099, 256);
+            this.Controls.Add(this.radioButton5);
+            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.selectedDateLabel);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.kursasDrop);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.redaguotiButton);
             this.Controls.Add(this.destytojasPicker);
             this.Controls.Add(this.destytojasLabel);
-            this.Controls.Add(this.atnaujintiButton);
             this.Controls.Add(this.atskyrimas1);
             this.Controls.Add(this.pab5);
             this.Controls.Add(this.pab4);
@@ -644,13 +621,7 @@
             this.Controls.Add(this.pask3);
             this.Controls.Add(this.pask2);
             this.Controls.Add(this.pask1);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.ziuretiButton);
-            this.Controls.Add(this.pasirinktiButton);
+            this.Controls.Add(this.trintiiButton);
             this.Controls.Add(this.idetiButton);
             this.Controls.Add(this.issaugotiButton);
             this.Controls.Add(this.auditorijaDrop);
@@ -690,12 +661,7 @@
         private System.Windows.Forms.ComboBox auditorijaDrop;
         private System.Windows.Forms.Button issaugotiButton;
         private System.Windows.Forms.Button idetiButton;
-        private System.Windows.Forms.Button pasirinktiButton;
-        private System.Windows.Forms.Button ziuretiButton;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Button trintiiButton;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label aud1;
         private System.Windows.Forms.Label aud2;
@@ -715,20 +681,22 @@
         private System.Windows.Forms.Label pab1;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label atskyrimas1;
-        private System.Windows.Forms.Button atnaujintiButton;
         private System.Windows.Forms.Label destytojasLabel;
         private System.Windows.Forms.ComboBox destytojasPicker;
-        private System.Windows.Forms.Button redaguotiButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox kursasDrop;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label pask1;
         private System.Windows.Forms.Label pask2;
         private System.Windows.Forms.Label pask3;
         private System.Windows.Forms.Label pask4;
         private System.Windows.Forms.Label pask5;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label selectedDateLabel;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }
 

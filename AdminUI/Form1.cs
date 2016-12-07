@@ -109,8 +109,6 @@ namespace AdminUI
                     }
 
                     connection.Close();
-
-
                 }
                 catch (Exception ex)
                 {

@@ -25,8 +25,17 @@ namespace AdminUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Width = 875 + monthCalendar1.Width + 10;
             selectedDateLabel.Width = monthCalendar1.Width;
+=======
+           
+        }
+
+        private void duombaze_Click(object sender, EventArgs e)
+        {
+
+>>>>>>> refs/remotes/origin/master
         }
 
         private void idetiButton_Click(object sender, EventArgs e)

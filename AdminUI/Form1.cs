@@ -49,9 +49,10 @@ namespace AdminUI
             connection.Close();
         }
 
-        private void ziuretiButton_Click(object sender, EventArgs e)
+        private void monthCalendar1_MouseUp(object sender, MouseEventArgs e)
         {
-            string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + dateTimePicker1.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
+            label2.Text = monthCalendar1.SelectionRange.Start.ToString("yyyy-MM-dd");
+            string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + label2.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
             MySqlCommand cmd = new MySqlCommand(selectQuerry, connection);
             connection.Open();
             MySqlDataReader reader = cmd.ExecuteReader();

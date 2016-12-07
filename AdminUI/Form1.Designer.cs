@@ -79,8 +79,9 @@
             this.redaguotiButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.kursasDrop = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label2 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -300,13 +301,13 @@
             // 
             // ziuretiButton
             // 
-            this.ziuretiButton.Location = new System.Drawing.Point(855, 210);
+ /*           this.ziuretiButton.Location = new System.Drawing.Point(855, 210);
             this.ziuretiButton.Name = "ziuretiButton";
             this.ziuretiButton.Size = new System.Drawing.Size(227, 40);
             this.ziuretiButton.TabIndex = 17;
             this.ziuretiButton.Text = "Žiūrėti pasirinktos dienos tvarkaraštį";
             this.ziuretiButton.UseVisualStyleBackColor = true;
-            this.ziuretiButton.Click += new System.EventHandler(this.ziuretiButton_Click);
+            this.ziuretiButton.Click += new System.EventHandler(this.ziuretiButton_Click);  */
             // 
             // checkBox2
             // 
@@ -578,15 +579,6 @@
             this.kursasDrop.Size = new System.Drawing.Size(79, 21);
             this.kursasDrop.TabIndex = 55;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(855, 178);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(80, 20);
-            this.dateTimePicker1.TabIndex = 56;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -597,12 +589,30 @@
             this.checkBox1.Text = "1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(855, 45);
+            this.monthCalendar1.MaxSelectionCount = 1;
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 56;
+            this.monthCalendar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.monthCalendar1_MouseUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(943, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "label2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 256);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.kursasDrop);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.redaguotiButton);
@@ -711,13 +721,14 @@
         private System.Windows.Forms.Button redaguotiButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox kursasDrop;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label pask1;
         private System.Windows.Forms.Label pask2;
         private System.Windows.Forms.Label pask3;
         private System.Windows.Forms.Label pask4;
         private System.Windows.Forms.Label pask5;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

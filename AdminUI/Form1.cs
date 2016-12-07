@@ -35,6 +35,7 @@ namespace AdminUI
 
             connection.Open();
             MySqlCommand command = new MySqlCommand(insertQuerry, connection);
+
             if (command.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Irasas ikeltas");
@@ -43,6 +44,7 @@ namespace AdminUI
             {
                 MessageBox.Show("Irasas neikeltas");
             }
+
             connection.Close();
 
             string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + dataPicker.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
@@ -82,10 +84,12 @@ namespace AdminUI
                     MessageBox.Show(ex.Message);
                     connection.Close();
                 }
+
             string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + selectedDateLabel.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
             Array.Clear(kas, 0, kas.Length);
             rodymas(selectQuerry);
         }
+
         private void rodymas(string sel)
         {
             MySqlCommand cmd = new MySqlCommand(sel, connection);
@@ -161,6 +165,11 @@ namespace AdminUI
         }
 
         private void issaugotiButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void redaguotiButton_Click(object sender, EventArgs e)
         {
 
         }

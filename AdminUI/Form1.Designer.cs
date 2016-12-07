@@ -79,6 +79,7 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.redaguotiButton = new System.Windows.Forms.Button();
             label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -291,7 +292,7 @@
             // 
             this.trintiiButton.Location = new System.Drawing.Point(380, 205);
             this.trintiiButton.Name = "trintiiButton";
-            this.trintiiButton.Size = new System.Drawing.Size(460, 40);
+            this.trintiiButton.Size = new System.Drawing.Size(265, 40);
             this.trintiiButton.TabIndex = 16;
             this.trintiiButton.Text = "Ištrinti pasirinktą įrašą";
             this.trintiiButton.UseVisualStyleBackColor = true;
@@ -580,11 +581,22 @@
             this.radioButton5.Text = "5";
             this.radioButton5.UseVisualStyleBackColor = true;
             // 
+            // redaguotiButton
+            // 
+            this.redaguotiButton.Location = new System.Drawing.Point(660, 205);
+            this.redaguotiButton.Name = "redaguotiButton";
+            this.redaguotiButton.Size = new System.Drawing.Size(180, 40);
+            this.redaguotiButton.TabIndex = 63;
+            this.redaguotiButton.Text = "Redaguoti pasirinktą įrašą";
+            this.redaguotiButton.UseVisualStyleBackColor = true;
+            this.redaguotiButton.Click += new System.EventHandler(this.redaguotiButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 256);
+            this.Controls.Add(this.redaguotiButton);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.radioButton3);
@@ -697,6 +709,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.Button redaguotiButton;
     }
 }
 

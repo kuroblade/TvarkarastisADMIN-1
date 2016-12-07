@@ -14,7 +14,7 @@ namespace AdminUI
 {
     public partial class Form1 : Form
     {
-        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=Projektas7;database=tvarkarastisdata");
+        MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;database=tvarkarastisdata");
         String[] kas = new String[50];
         String pasirinktas;
 
@@ -25,17 +25,17 @@ namespace AdminUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             Width = 875 + monthCalendar1.Width + 10;
             selectedDateLabel.Width = monthCalendar1.Width;
-=======
-           
+            issaugotiButton.Visible = false;
+            dinksta();
+
         }
 
         private void duombaze_Click(object sender, EventArgs e)
         {
 
->>>>>>> refs/remotes/origin/master
         }
 
         private void idetiButton_Click(object sender, EventArgs e)
@@ -98,7 +98,14 @@ namespace AdminUI
             Array.Clear(kas, 0, kas.Length);
             rodymas(selectQuerry);
         }
-
+        private void dinksta()
+        {
+            radioButton1.Visible = false;
+            radioButton2.Visible = false;
+            radioButton3.Visible = false;
+            radioButton4.Visible = false;
+            radioButton5.Visible = false;
+        }
         private void rodymas(string sel)
         {
             MySqlCommand cmd = new MySqlCommand(sel, connection);
@@ -106,6 +113,7 @@ namespace AdminUI
             MySqlDataReader reader = cmd.ExecuteReader();
             int i = 0;
             int k = 0;
+            dinksta();
             while (reader.Read())
             {
                 kas[i] = (reader.GetString("id"));
@@ -119,6 +127,14 @@ namespace AdminUI
                 kas[i] = (reader.GetString("auditorija"));
                 i++;
                 k++;
+            }
+            for(int j=0;j<k;j++)
+            {
+                if (j == 0) radioButton1.Visible = true;
+                if (j==1) radioButton2.Visible = true;
+                if(j==2) radioButton3.Visible = true;
+                if(j==3) radioButton4.Visible = true;
+                if(j==4) radioButton5.Visible = true;
             }
             radioButton1.Tag = kas[0];
             pask1.Text = kas[1];
@@ -154,6 +170,7 @@ namespace AdminUI
             if (radioButton1.Checked)
             {
                 pasirinktas = radioButton1.Tag.ToString();
+                
             }
             else if (radioButton2.Checked)
             {
@@ -175,12 +192,54 @@ namespace AdminUI
 
         private void issaugotiButton_Click(object sender, EventArgs e)
         {
+            radio();
+            string updatequary = " UPDATE tvarkarastis SET grupe ='" + grupeDrop.Text + "' , kursas='" + kursasDrop.SelectedItem + "' , data=  '" + dataPicker.Text + "' , dalykas='" + dalykasDrop.SelectedItem + "' , destytojas= '" + destytojasPicker.SelectedItem + "' , pradzia= '" + pradziaPicker.Text + "' , pabaiga = '" + pabaigaPicker.Text + "' ,  auditorija= '" + auditorijaDrop.SelectedItem + "' WHERE `id` = '" + pasirinktas + "'";
+            MySqlCommand cmd = new MySqlCommand(updatequary, connection);
+            try
+            {
+                connection.Open();
 
+                if (MessageBox.Show("Ar tikrai norit pakeisti irasa?", "pakeisti", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Sekmingai pakeistas");
+                    }
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+            }
+
+            string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + dataPicker.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
+            Array.Clear(kas, 0, kas.Length);
+            rodymas(selectQuerry);
         }
 
         private void redaguotiButton_Click(object sender, EventArgs e)
         {
-
+            radio();
+            string inputquary = "SELECT * FROM tvarkarastis WHERE `id` = '" + pasirinktas + "'" ;
+            MySqlCommand cmd = new MySqlCommand(inputquary, connection);
+            connection.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                grupeDrop.SelectedItem = reader.GetString("grupe");
+                kursasDrop.SelectedItem = (reader.GetString("kursas"));
+                dataPicker.Value = Convert.ToDateTime(reader.GetString("data"));
+                dalykasDrop.SelectedItem = (reader.GetString("dalykas"));
+                destytojasPicker.SelectedItem = (reader.GetString("destytojas"));
+                pradziaPicker.Value = Convert.ToDateTime(reader.GetString("pradzia"));
+                pabaigaPicker.Value = Convert.ToDateTime(reader.GetString("pabaiga"));
+                auditorijaDrop.SelectedItem = (reader.GetString("auditorija"));
+             
+            }
+            connection.Close();
+            issaugotiButton.Visible = true;
         }
     }
 }

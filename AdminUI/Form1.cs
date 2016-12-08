@@ -217,6 +217,7 @@ namespace AdminUI
             string selectQuerry = "SELECT * FROM tvarkarastis WHERE `data` = '" + dataPicker.Text + "' AND `grupe` = '" + grupeDrop.Text + "' AND `kursas` = '" + kursasDrop.Text + "'";
             Array.Clear(kas, 0, kas.Length);
             rodymas(selectQuerry);
+
         }
 
         private void redaguotiButton_Click(object sender, EventArgs e)
